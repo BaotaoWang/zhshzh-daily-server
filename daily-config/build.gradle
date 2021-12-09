@@ -1,0 +1,23 @@
+description = 'spring相关配置模块'
+
+dependencies {
+    implementation project(":daily-core")
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.apache.commons:commons-lang3'
+    implementation 'com.github.xiaoymin:knife4j-spring-boot-starter'
+    // 序列化工具包
+    implementation 'com.alibaba:fastjson'
+    // 编译时为pojo类自动生成getter,setter等方法
+    compileOnly 'org.projectlombok:lombok'
+    // 编译时为pojo类自动生成getter,setter等方法
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}

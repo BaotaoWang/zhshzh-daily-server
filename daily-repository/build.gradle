@@ -1,0 +1,22 @@
+description = '系统持久层'
+
+dependencies {
+    // spring-boot web项目包
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // mybatis-plus核心包，其中包含mybatis
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
+    // 编译时为pojo类自动生成getter,setter等方法
+    compileOnly 'org.projectlombok:lombok'
+    // mysql连接驱动
+    runtimeOnly 'mysql:mysql-connector-java'
+    // 编译时为pojo类自动生成getter,setter等方法
+    annotationProcessor 'org.projectlombok:lombok'
+}
+
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}

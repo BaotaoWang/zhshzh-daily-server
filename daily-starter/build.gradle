@@ -1,0 +1,32 @@
+description = '启动模块'
+
+dependencies {
+    implementation project(":daily-config")
+    implementation project(":daily-test")
+
+    // spring-boot web项目包
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.baomidou:mybatis-plus-boot-starter'
+    // spring集成的junit测试工具包
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+copy {
+    from '../daily-repository/src/main/resources/application-repository.yml'
+    into 'build/resources/main/'
+}
+
+copy {
+    from '../daily-config/src/main/resources/application-config.yml'
+    into 'build/resources/main/'
+}
+
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = true
+}

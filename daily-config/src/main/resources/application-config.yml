@@ -1,0 +1,13 @@
+swagger:
+  title: 中晟日志系统 RESTful API
+  name: 中晟软件股份有限公司
+  url: http://www.zhshzh.com.cn/
+  email: btking@yeah.net
+  description: 中晟日志系统接口文档
+  version: 2.0.0
+
+spring:
+  mvc:
+    pathmatch:
+      # springboot 2.6.0中，SpringMVC默认路径匹配策略从AntPathMatcher更改为PathPatternParser，这会导致knife4j启动报错
+      matching-strategy: ant_path_matcher

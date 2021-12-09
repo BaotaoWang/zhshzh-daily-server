@@ -1,0 +1,60 @@
+plugins {
+    id 'io.spring.dependency-management' version "${dependencyManagementVersion}"
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'java-library'
+    id 'java'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+allprojects {
+    group = 'cn.com.zhshzh'
+    version = '2.0.0'
+    sourceCompatibility = '1.8'
+
+    configurations {
+        /* 排除logback及log4j的日志包，只用log4j2日志 */
+//        implementation.exclude module: 'logback-classic'
+//        implementation.exclude module: 'spring-boot-starter-logging'
+//        implementation.exclude module: 'slf4j-log4j12'
+//        implementation.exclude module: 'log4j'
+    }
+
+    repositories {
+        // maven { url 'http://10.100.0.74/repository/maven-public/'; allowInsecureProtocol true }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java-library'
+    apply plugin: 'java'
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "com.alibaba.cloud:spring-cloud-alibaba-dependencies:${springCloudAlibabaVersion}"
+        }
+
+        dependencies {
+            dependency "com.alibaba:fastjson:${fastjsonVersion}"
+            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+            dependency "com.baomidou:mybatis-plus-annotation:${mybatisPlusVersion}"
+            dependency "com.baomidou:mybatis-plus-generator:${mybatisPlusGeneratorVersion}"
+            dependency "org.apache.commons:commons-lang3:${commonsLang3Version}"
+            dependency "org.apache.velocity:velocity-engine-core:${velocityEngineVersion}"
+            dependency "com.github.xiaoymin:knife4j-spring-boot-starter:${knife4jVersion}"
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

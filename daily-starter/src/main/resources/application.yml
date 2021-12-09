@@ -1,0 +1,10 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /daily
+
+spring:
+  application:
+    name: daily-starter
+  profiles:
+    active: config, repository

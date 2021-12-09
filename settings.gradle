@@ -1,0 +1,8 @@
+rootProject.name = 'zhshzh-daily-server'
+include 'daily-core'
+include 'daily-repository'
+include 'daily-generator'
+include 'daily-starter'
+include 'daily-config'
+include 'daily-test'
+
